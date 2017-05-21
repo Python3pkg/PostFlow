@@ -39,5 +39,5 @@ class TestPost(BaseCase):
         self.post("/posts", data=data)
 
         response = self.get("/posts")
-        print response
+        print(response)
         assert len(response) == 2

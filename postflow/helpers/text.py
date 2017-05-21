@@ -11,7 +11,7 @@ _pre_re = re.compile(r'<pre (?=l=[\'"]?\w+[\'"]?).*?>(?P<code>[\w\W]+?)</pre>')
 _lang_re = re.compile(r'l=[\'"]?(?P<lang>\w+)[\'"]?')
 
 
-def slugify(text, delim=u'-'):
+def slugify(text, delim='-'):
     """Generates an ASCII-only slug. From http://flask.pocoo.org/snippets/5/"""
     split_text = []
     text = text.decode() if isinstance(text, str) else text
@@ -21,7 +21,7 @@ def slugify(text, delim=u'-'):
             word = word.decode() if isinstance(word, str) else word
             result.extend(unidecode(word).split())
         split_text.extend(result)
-    return unicode(delim.join(split_text))
+    return str(delim.join(split_text))
 
 import tempfile
 import itertools as IT

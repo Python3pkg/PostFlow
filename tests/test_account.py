@@ -10,7 +10,7 @@ class TestAccount(BaseCase):
             password='test_password_1')
 
         response = self.post("/accounts", data=data)
-        print response
+        print(response)
         assert response["name"] == data["name"]
 
     def test_get_account(self):

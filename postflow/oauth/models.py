@@ -125,7 +125,7 @@ class Token(db.Model, CRUDMixin):
     def __init__(self, **kwargs):
         expires_in = kwargs.pop('expires_in')
         self.expires = datetime.utcnow() + timedelta(seconds=expires_in)
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             setattr(self, k, v)
 
     @property

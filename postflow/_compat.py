@@ -13,18 +13,18 @@ if not PY2:     # pragma: no cover
     integer_types = (int, )
     intern_method = sys.intern
     range_method = range
+    iterkeys = lambda d: iter(list(d.keys()))
+    itervalues = lambda d: iter(list(d.values()))
+    iteritems = lambda d: iter(list(d.items()))
+else:           # pragma: no cover
+    text_type = str
+    string_types = (str, str)
+    integer_types = (int, int)
+    intern_method = intern
+    range_method = xrange
     iterkeys = lambda d: iter(d.keys())
     itervalues = lambda d: iter(d.values())
     iteritems = lambda d: iter(d.items())
-else:           # pragma: no cover
-    text_type = unicode
-    string_types = (str, unicode)
-    integer_types = (int, long)
-    intern_method = intern
-    range_method = xrange
-    iterkeys = lambda d: d.iterkeys()
-    itervalues = lambda d: d.itervalues()
-    iteritems = lambda d: d.iteritems()
 
 
 def to_bytes(text, encoding='utf-8'):

@@ -39,7 +39,7 @@ class BaseSchema(Schema):
             return None
         props = get_primary_keys(self.opts.model)
         filters = {prop.key: data.get(prop.key) for prop in props}
-        if None not in filters.values():
+        if None not in list(filters.values()):
             return self.opts.model.query.filter_by(**filters).first()
         return None
 
@@ -122,7 +122,7 @@ def render_error(code, error, status=400):
 
 
 def update_object(obj, data):
-    for key, value in data.iteritems():
-        print key, value
+    for key, value in data.items():
+        print(key, value)
         setattr(obj, key, value)
     return obj

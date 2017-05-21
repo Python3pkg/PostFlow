@@ -36,7 +36,7 @@ def update():
     settings = []
     for key in payload:
         item = payload[key]
-        if 'key' in item.keys():
+        if 'key' in list(item.keys()):
             setting = save_setting(item['key'], item.get('value'))
             settings.append(setting)
     return SettingSchema().jsonify(settings)
